@@ -1,0 +1,76 @@
+<div class="container" style="width: 500px">
+  <img src="../assets/images/Banner10.png" class="bannerFormatting" />
+  <div class="d-flex justify-content-center sentenceWidthCorrection">
+    <form [formGroup]="form">
+      <div class="form-group min-vw-45 sentenceWidthCorrection">
+        <label> Select your Word type:</label>
+        <select
+          class="form-select"
+          aria-label=".form-select-lg"
+          (change)="checkWordTypeDropDown($event)"
+          formControlName="wordTypeControl"
+        >
+          <option *ngFor="let word of wordList" [value]="word.wordType">
+            {{ word.wordType }}
+          </option>
+        </select>
+      </div>
+
+      <div
+      *ngIf="listOfWords.length > 0" 
+      class="form-group min-vw-45 sentenceWidthCorrection">
+        <label> Select your word:</label>
+
+        <select
+          class="form-select"
+          aria-label=".form-select-lg"
+          formControlName="listOfWordTypeControl"
+          #wordSelection
+          (change)="wordSelected($event)"
+          ngModel="default"
+        >
+          <option disabled selected value="default" hidden>
+            -- select an option --
+          </option>
+          <option *ngFor="let singleWord of listOfWords" [value]="singleWord">
+            {{ singleWord }}
+          </option>
+        </select>
+      </div>
+      <br />
+
+      <h4>Your sentence:</h4>
+      <div
+        class="d-flex justify-content-left border border-primary p-2 rounded sentenceWidthCorrection"
+      >
+        {{
+          usersSentence.length > 0
+            ? usersSentence
+            : "Order to create your sentence, select from the words above"
+        }}
+      </div>
+      <div class="d-flex justify-content-center">
+        <button
+          *ngIf="usersSentence.length > 0"
+          type="button"
+          class="btn btn-success m-1"
+          (click)="saveSentence()"
+        >
+          Save
+        </button>
+        <br />
+        <button
+          *ngIf="usersSentence.length > 0"
+          type="button"
+          class="btn btn-warning m-1"
+          (click)="clearSentence()"
+        >
+          Clear
+        </button>
+      </div>
+      <br />
+
+      <h4>List of sentences:</h4>
+    </form>
+  </div>
+</div>
