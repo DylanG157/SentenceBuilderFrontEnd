@@ -1,0 +1,23 @@
+.sentenceWidthCorrection{ 
+    width: 480px;
+}
+
+.mainContainerSpacing{ 
+    width: 500px;
+    color: white;
+    font-weight: bold;
+    font-size: 22px; 
+}
+
+.sentenceBox{
+    background-color: white;
+    color: black;
+    font-size: 16px;
+    font-weight: normal;
+}
+
+.sentenceHeading{
+    color: white;
+    font-weight: bold;
+    font-size: 22px; 
+}

@@ -1,9 +1,5 @@
 import { Component } from '@angular/core';
-import { WordList } from './word-models';
-import { HttpClient } from '@angular/common/http';
-import { DataStorageService } from './data-storage.service';
-import { FormGroup, FormControl } from '@angular/forms';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Component({
   selector: 'app-root',
@@ -12,70 +8,20 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 })
 
 export class AppComponent {
-  title = 'SentenceBuilder';
-  wordList: WordList[] = [];
-
-  constructor(
-    private http: HttpClient,
-    private dataStorageService: DataStorageService,
-    private modalService: NgbModal
-  ) {}
-
-  public open(modal: any): void {
-    this.modalService.open(modal);
-  }
-
-  //This will store the users current sentence they are buidling
-  usersSentence = '';
-  //List of words the user can select from 
-  listOfWords: any = [];
-
-  form = new FormGroup({
-    wordTypeControl: new FormControl(),
-    listOfWordTypeControl: new FormControl(),
-  });
+  constructor(private http: HttpClient) {}
 
   ngOnInit() {
+
+    //Used to get an access token for the back-end API's
     this.http
-      .get<WordList[]>('http://localhost:3000/words/list')
+      .post<any>('http://localhost:3000/authentication/token', {
+        client_id:
+          'c3c3c151679142ac3edc95eef4cddb5919e2145369bc09783f8ca1b2ded3745ff33f05556e669e7030473a61917626035aa6a223b3565c1901ad424954766c8c',
+        client_secret:
+          '3177aa7732c46d9d48c253f8dd94153f4fa7f4aaf938b061f5880d7f67d0756dc6e7beaedc11058f72d7d89a8d5542c2a1704fcb911ce600ce2763eab5b5d290',
+      })
       .subscribe((res) => {
-        this.wordList = res;
-        console.log(this.wordList);
+        localStorage.setItem('accessToken',res.accessToken)
       });
-  }
-
-  wordSelected(wordSelected: Event) {
-    const selectedDropDownListValue = (<HTMLInputElement>wordSelected.target)
-      .value;
-    this.usersSentence += selectedDropDownListValue + ' ';
-  }
-  
-  saveSentence() {
-    //Used to call the backend API to save the sentence
-    this.dataStorageService.saveSentenceCreated(this.usersSentence);
-
-    //Used to clear, so the user can start building a new sentence
-    this.usersSentence = '';
-    this.listOfWords = [];
-    this.form.controls.wordTypeControl.reset();
-    this.form.controls.listOfWordTypeControl.reset();
-  }
-
-  checkWordTypeDropDown(event: Event) {
-    //Word type selection made by the user
-    const selectedDropDownListValue = (<HTMLInputElement>event.target).value;
-
-    //Used to retrieve the list of words for that particular word type 
-    this.listOfWords = this.wordList.filter(
-      (c) => c.wordType === selectedDropDownListValue
-    );
-    this.listOfWords = this.listOfWords[0].FullWordList;
-  }
-
-  clearSentence() {
-    //Used to reset the data so the user can build a new sentence 
-    this.usersSentence = '';
-    this.listOfWords = [];
-    this.form.controls.wordTypeControl.reset();
   }
 }
