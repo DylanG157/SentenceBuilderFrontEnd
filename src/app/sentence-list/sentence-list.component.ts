@@ -23,10 +23,6 @@ export class SentenceListComponent implements OnInit {
       .get<SentenceList[]>('http://localhost:3000/sentence/list')
       .subscribe((res) => {
         this.listOfSentences = res;
-
-        console.log(this.listOfSentences);
       });
-
-      
   }
 }

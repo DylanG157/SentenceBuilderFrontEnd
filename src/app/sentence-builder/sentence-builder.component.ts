@@ -40,7 +40,6 @@ export class SentenceBuilderComponent implements OnInit {
       .get<WordList[]>('http://localhost:3000/words/list')
       .subscribe((res) => {
         this.wordList = res;
-        console.log(this.wordList);
       });
   }
 
