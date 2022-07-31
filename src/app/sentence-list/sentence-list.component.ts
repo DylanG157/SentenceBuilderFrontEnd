@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { DataStorageService } from '../shared/data-storage.service';
 import { SentenceList } from '../models/sentenceList-model';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
+import { environment } from '../../environments/environment';
 
 @Component({
   selector: 'app-sentence-list',
@@ -9,19 +9,15 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
   styleUrls: ['./sentence-list.component.css'],
 })
 export class SentenceListComponent implements OnInit {
-  constructor(
-    private dataStorageService: DataStorageService,
-    private http: HttpClient
-  ) {}
+  constructor(private http: HttpClient) {}
 
   listOfSentences: any = [];
 
-  colorList = ['#fb9667', '#000000', '#0b9660'];
-
   ngOnInit(): void {
     this.http
-      .get<SentenceList[]>('http://localhost:3000/sentence/list')
+      .get<SentenceList[]>(`${environment.apiUrl}/sentence/list`)
       .subscribe((res) => {
+        console.log(res.reverse());
         this.listOfSentences = res;
       });
   }
