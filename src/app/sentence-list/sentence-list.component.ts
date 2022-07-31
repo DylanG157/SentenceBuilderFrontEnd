@@ -17,20 +17,16 @@ export class SentenceListComponent implements OnInit {
   listOfSentences: any = [];
 
   ngOnInit(): void {
-    this.http
-      .get<SentenceList[]>(`${environment.apiUrl}/sentence/list`)
-      .subscribe((res) => {
-        console.log(res.reverse());
-        this.listOfSentences = res;
-      });
+    this.getSentenceList()
   }
 
   public getSentenceList() {
     this.http
       .get<SentenceList[]>(`${environment.apiUrl}/sentence/list`)
       .subscribe((res) => {
-        console.log(res.reverse());
         this.listOfSentences = res;
+        this.listOfSentences = this.listOfSentences[0].reverse()
+        this.listOfSentences = this.listOfSentences.slice(0,7)
       });
   }
 }

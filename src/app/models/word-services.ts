@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { WordList, WordListArray } from './word-models';
 import { HttpClient } from '@angular/common/http';
-import { map, tap } from 'rxjs/operators';
 import { environment } from '../../environments/environment';
 
 

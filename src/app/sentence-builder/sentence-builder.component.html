@@ -2,7 +2,9 @@
   <div class="d-flex justify-content-center sentenceWidthCorrection">
     <form [formGroup]="form">
       <div class="form-group min-vw-45 sentenceWidthCorrection">
-        <h4 class="sentenceHeading mb-2 mt-1 text-warning">Select your word type:</h4>
+        <h4 class="sentenceHeading mb-2 mt-1 text-warning">
+          Select your word type:
+        </h4>
         <select
           class="form-select"
           aria-label=".form-select-lg"
@@ -10,8 +12,10 @@
           formControlName="wordTypeControl"
           ngModel="default"
         >
-        <option disabled selected value="default" hidden>
-          Step 1 - Select your word type
+          <option disabled selected value="default" hidden>
+            Step 1 - Select your word type
+          </option>
+
           <option *ngFor="let word of wordList" [value]="word.wordType">
             {{ word.wordType }}
           </option>
@@ -22,7 +26,9 @@
         *ngIf="listOfWords.length > 0"
         class="form-group min-vw-45 sentenceWidthCorrection"
       >
-        <h4 class="sentenceHeading mb-2 mt-2 text-warning">Select your word:</h4>
+        <h4 class="sentenceHeading mb-2 mt-2 text-warning">
+          Select your word:
+        </h4>
 
         <select
           class="form-select"
