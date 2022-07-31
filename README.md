@@ -10,8 +10,8 @@
 2. Clone this repo
 3. Run npm install (or install angular as well if prompted) 
 4. Run the following command to start the application.: 'ng serve'
-5. Then open the connection string provided in the command lind 
-6. If you want to test our the mobile capability use the following command if you use andriod studio 'npx cap open android'
+5. Then open the connection string provided in the command line (if your website block it, its just because of the ssl certificate )
+6. If you want to test our the mobile capability use the following command if you use andriod studio 'npx cap open android' ( In progress)
 
 
 ## Main site in action: 
