@@ -4,7 +4,8 @@ import { HttpClient } from '@angular/common/http';
 import { DataStorageService } from '../shared/data-storage.service';
 import { FormGroup, FormControl } from '@angular/forms';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { MatCardModule } from '@angular/material/card';
+import { environment } from '../../environments/environment';
+
 
 @Component({
   selector: 'app-sentence-builder',
@@ -37,7 +38,7 @@ export class SentenceBuilderComponent implements OnInit {
 
   ngOnInit() {
     this.http
-      .get<WordList[]>('http://localhost:3000/words/list')
+      .get<WordList[]>(`${environment.apiUrl}/words/list`)
       .subscribe((res) => {
         this.wordList = res;
       });
