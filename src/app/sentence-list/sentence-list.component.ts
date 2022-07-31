@@ -16,8 +16,6 @@ export class SentenceListComponent implements OnInit {
 
   listOfSentences: any = [];
 
-  colorList = ['#fb9667', '#000000', '#0b9660'];
-
   ngOnInit(): void {
     this.http
       .get<SentenceList[]>('http://localhost:3000/sentence/list')
