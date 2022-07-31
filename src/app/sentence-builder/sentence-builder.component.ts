@@ -1,11 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Injectable } from '@angular/core';
 import { WordList } from '../models/word-models';
 import { HttpClient } from '@angular/common/http';
 import { DataStorageService } from '../shared/data-storage.service';
 import { FormGroup, FormControl } from '@angular/forms';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { environment } from '../../environments/environment';
-
+import { SentenceListComponent } from '../sentence-list/sentence-list.component'
 
 @Component({
   selector: 'app-sentence-builder',
@@ -19,7 +19,8 @@ export class SentenceBuilderComponent implements OnInit {
   constructor(
     private http: HttpClient,
     private dataStorageService: DataStorageService,
-    private modalService: NgbModal
+    private modalService: NgbModal,
+    private sentenceListComponent : SentenceListComponent
   ) {}
 
   public open(modal: any): void {
@@ -59,6 +60,7 @@ export class SentenceBuilderComponent implements OnInit {
     this.listOfWords = [];
     this.form.controls.wordTypeControl.reset();
     this.form.controls.listOfWordTypeControl.reset();
+    this.sentenceListComponent.getSentenceList();
   }
 
   checkWordTypeDropDown(event: Event) {

@@ -1,5 +1,13 @@
 <div class="container mainContainerSpacing">
   <h4 class="sentenceHeading text-warning mb-1">List of created sentences:</h4>
+  <button
+          *ngIf="listOfSentences.length > 0"
+          type="button"
+          class="btn btn-success m-1"
+          (click)="getSentenceList()"
+        >
+          Refresh
+        </button>
 </div>
 
 <div *ngFor="let singleSentence of listOfSentences[0];" class="container mainContainerSpacing" >
