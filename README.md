@@ -14,8 +14,18 @@
 6. If you want to test our the mobile capability use the following command if you use andriod studio 'npx cap open android'
 
 
-## Take a look: 
+## Main site in action: 
+<p align="left">
+  <img src="./readmeData/mainSiteOne.jpg" alt="Api Services" width="250">
+</p>
 
 <p align="left">
-  <img src="./readmeData/ApiServices.jpg" alt="Api Services" width="250">
+  <img src="./readmeData/mainSiteTwo.jpg" alt="Api Services" width="250">
+</p>
+
+
+## Mobile App development in progress: 
+
+<p align="left">
+  <img src="./readmeData/mobileApplication.jpg" alt="Api Services" width="250">
 </p>
