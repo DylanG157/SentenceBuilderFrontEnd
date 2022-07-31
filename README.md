@@ -3,7 +3,7 @@
 ## Features 
 1. angular
 2. calling back-end services with JWT authentication 
-3. Runs on mobile application (andriod and IOS) (uses capacitor)
+3. Runs on mobile application (andriod and IOS) (uses capacitor) ( In Progress )
 
 ## How to use and test this NodeJs Express application
 1. First you must clone and run the following repo: https://github.com/DylanG157/SentenceBuilderBackEnd (for the back-end API's )
